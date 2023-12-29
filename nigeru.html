@@ -272,6 +272,17 @@
 		                function updateScore() {
 		                    score++;
 		                }
+		                // 無限スクロールの実装
+						window.onscroll = function() {
+						    const documentHeight = document.documentElement.scrollHeight;
+						    const scrollPosition = window.innerHeight + window.scrollY;
+
+						    if (scrollPosition >= documentHeight * 0.85) {  // ページ全体の高さの85%までスクロールしたとき
+						        for (let i = 0; i < 5; i++) {
+						            createGridRow(false);
+						        }
+						    }
+						};
 		            }
 		        }
 		    }
