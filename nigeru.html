@@ -85,15 +85,14 @@
 
 		// 無限スクロールの実装
 		window.onscroll = function() {
-		    // ドキュメントの全体の高さを再計算
 		    const documentHeight = document.documentElement.scrollHeight;
+		    const scrollPosition = window.innerHeight + window.scrollY;
 
-		    if ((window.innerHeight + window.scrollY) >= documentHeight) {
-		        // ユーザーがページの底までスクロールしたとき、新しいグリッド行を生成
-                for (let i = 0; i < 5; i++) {
-                    createGridRow(false);
-                }
-           }
+		    if (scrollPosition >= documentHeight * 0.85) {  // ページ全体の高さの85%までスクロールしたとき
+		        for (let i = 0; i < 5; i++) {
+		            createGridRow(false);
+		        }
+		    }
 		};
 
 
